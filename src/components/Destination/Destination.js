@@ -32,7 +32,7 @@ const Destination = () => {
 
 
 
-    console.log(vehicleinfos.name);
+
 
 
 
@@ -69,19 +69,19 @@ const Destination = () => {
                         <br></br>
                         <div className="destination-wrapper" id="destinationPicker">
                             <div className="destination-container">
-                                    <form onSubmit={handleSubmit(onSubmit)}>
-                                        <label>Pick From</label><br />
-                                        <input className="inputStyle" name="pickupFrom" ref={register({ required: true })} />
-                                        {errors.pickupFrom && <span>field is required</span>}
-                                        <br></br>
-                                        <label>Pick To</label><br></br>
-                                        <input className="inputStyle" name="pickupTo" ref={register({ required: true })} />
-                                        {errors.pickupFrom && <span>field is required</span>}
-                                        <br></br>
-                                        <div style={{marginTop:'10px',textAlign:'center'}}>
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <label>Pick From</label><br />
+                                    <input className="inputStyle" name="pickupFrom" ref={register({ required: true })} />
+                                    {errors.pickupFrom && <span>field is required</span>}
+                                    <br></br>
+                                    <label>Pick To</label><br></br>
+                                    <input className="inputStyle" name="pickupTo" ref={register({ required: true })} />
+                                    {errors.pickupFrom && <span>field is required</span>}
+                                    <br></br>
+                                    <div style={{ marginTop: '10px', textAlign: 'center' }}>
                                         <input className="pick-btn" type="submit" value="Search" />
-                                        </div>
-                                    </form>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
@@ -151,7 +151,7 @@ const Destination = () => {
 
                     <Col id="mapSection" sm={8} xs={12}>
                         <br></br>
-                        <div style={{ display: 'flex', background:'lightgray', minHeight: '550px', borderRadius: '3px', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', background: 'lightgray', minHeight: '550px', borderRadius: '3px', alignItems: 'center', justifyContent: 'center' }}>
 
                             <ReactMapGL
 

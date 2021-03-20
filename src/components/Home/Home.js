@@ -1,6 +1,6 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
-import {Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 
 import transportData from '../../fakeData/transport.json';
@@ -12,42 +12,42 @@ import Transport from '../Transport/Transport';
 const Home = () => {
 
     // set transport from fake data
- const [transports, setTransport] = useState([]);
+    const [transports, setTransport] = useState([]);
 
 
 
- 
 
- useEffect(() => {
 
-    setTransport(transportData);
-   
+    useEffect(() => {
 
- },[]);
+        setTransport(transportData);
 
- 
+
+    }, []);
+
+
 
 
 
     return (
-          
-        
-            <div className="home-wrapper">
 
-           <div className="content">
-           <Container className="home-container">
 
-            {
-                transports.map(tp => <Transport key={tp.id} transport={tp}></Transport>)
-            }
+        <div className="home-wrapper">
 
-        
+            <div className="content">
+                <Container className="home-container">
 
-           </Container>
-           </div>
+                    {
+                        transports.map(tp => <Transport key={tp.id} transport={tp}></Transport>)
+                    }
+
+
+
+                </Container>
+            </div>
 
         </div>
-        
+
     );
 };
 

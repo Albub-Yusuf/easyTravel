@@ -8,10 +8,9 @@ import './Transport.css';
 const Transport = (props) => {
 
     const [vehicleInfos, setvehicleInfos] = useContext(VehicleContext);
-    console.log(props.vehicle);
     const { id, vehicle, image, cost, capacity, economy, luxury } = props.transport;
-    console.log(vehicle);
-   
+
+
 
     const handleData = () => {
 
