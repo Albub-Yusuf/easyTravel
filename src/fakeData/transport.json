@@ -1,0 +1,34 @@
+[{
+    "id": 1,
+    "vehicle": "Bike",
+    "capacity": 1,
+    "cost": 20,
+    "image": "https://i-schoolman.com/players/yamaha.png",
+    "economy": 15,
+    "luxury": 30
+  }, {
+    "id": 2,
+    "vehicle": "Car",
+    "capacity": 4,
+    "cost": 60,
+    "image": "https://i-schoolman.com/players/car.png",
+    "economy": 50,
+    "luxury": 80
+  }, {
+    "id": 3,
+    "vehicle": "Bus",
+    "capacity": 40,
+    "cost": 25,
+    "image": "https://i-schoolman.com/players/bus.png",
+    "economy": 25,
+    "luxury": 60
+  }, {
+    "id": 4,
+    "vehicle": "Train",
+    "capacity": 200,
+    "cost": 40,
+    "image": "https://i-schoolman.com/players/train.png",
+    "economy": 35,
+    "luxury": 85
+  }
+  ]

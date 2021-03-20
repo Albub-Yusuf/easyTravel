@@ -1,0 +1,138 @@
+.nav-wrapper{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    
+}
+
+.logo{
+    width: 35%;
+    text-align: left;
+   
+}
+
+.login-btn{
+
+    
+    background-color: #069C54;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+   
+}
+
+.logo h3{
+
+    line-height: 10px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+}
+
+.nav-link{
+    width: 65%;
+}
+
+.nav-link ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.nav-link ul li{
+    list-style: none;
+    margin-left: 4%;
+    
+}
+
+.nav-link ul li a{
+    font-size: 18px;
+    line-height: 10px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;    
+}
+
+/* Nav link hidden */
+.nav-link-hidden{
+    width: 25%;
+    background-color: greenyellow;
+    margin-top: 80px;
+    display: none;
+}
+
+.nav-link-hidden ul {
+
+    text-align: left;
+
+}
+
+
+.nav-link-hidden ul li{
+    list-style: none;
+    
+}
+
+.nav-link-hidden ul li a{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 600;
+    color: #069C54;
+    text-decoration: none;    
+}
+
+
+/*  */
+
+.nav-link ul li a:hover{
+    color:#069C54;
+}
+
+.ham-menu{
+    color: #333;
+    display: none;
+}
+
+@media (max-width: 620px){
+
+    .logo{
+        width: 80%;
+        text-align: left;
+    }
+    .nav-link{
+        width: 20%;
+    }
+    .nav-link ul{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-top: 12px;
+    }
+
+    .nav-link ul li{
+        list-style: none;
+        margin-left: 5%;
+        
+    }
+
+    .ham-menu{
+        display: block;
+        font-size: 24px;
+        align-items: center;
+    }
+    
+    .nav-link ul li a{
+    
+        display: none;
+    }
+ 
+  }

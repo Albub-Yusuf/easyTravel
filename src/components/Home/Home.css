@@ -1,0 +1,30 @@
+.home-container{
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    
+    
+}
+
+
+.content{
+
+    width: 80%;
+    margin: 350px auto;
+    
+    
+}
+
+.home-wrapper{
+    margin-top: -150px;
+    min-width: 100%;
+    min-height: 108vh;
+    overflow: hidden;
+    background-image: url('../../images/bg7.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}

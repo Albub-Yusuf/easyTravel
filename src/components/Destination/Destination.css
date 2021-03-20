@@ -1,0 +1,28 @@
+.bar {
+    list-style: none;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .bar >li {
+    position: relative;
+  }
+  .bar>li:before {
+    content: '\25CF';
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .bar>li:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    border-left: 2px solid #fff;
+    margin-left: 5px;
+    height: 95%;
+  }
+  .bar >li:first-of-type:after {
+    top: 50%;
+  }
+  .bar >li:last-of-type:after {
+    top: -50%;
+  }
