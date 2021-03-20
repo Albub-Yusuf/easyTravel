@@ -14,7 +14,7 @@ import { useState } from 'react';
 const Navbar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
 
-    const [locations, setLocations] = useState(true);
+    const [locations, setLocations] = useState(false);
 
 
     const handleNavToggle = () => {
