@@ -27,6 +27,7 @@ const Destination = () => {
         longitude: 90.3742,
         zoom: 13,
         pitch: 50
+       
 
     })
 
