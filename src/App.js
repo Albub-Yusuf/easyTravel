@@ -20,7 +20,7 @@ import Navbar from './components/NavBar/Navbar'
 
 
 export const AuthContext = createContext();
-export const VContext = createContext();
+export const VehicleContext = createContext();
 
 
 
@@ -37,7 +37,7 @@ function App() {
     hasError:'',
   });
 
-  const [vinfo, setVinfo] = useState({
+  const [vehicleInfos, setvehicleInfos] = useState({
 
     id: '',
     name: '',
@@ -54,7 +54,7 @@ function App() {
     <div>
 
 <AuthContext.Provider value={[loggedInUser, setLoggedInUser]}>
-    <VContext.Provider value={[vinfo, setVinfo]}> 
+    <VehicleContext.Provider value={[vehicleInfos, setvehicleInfos]}> 
       <Router>
       <Navbar></Navbar>
         <Switch>
@@ -64,7 +64,7 @@ function App() {
           <Route path="/home">
               <Home></Home>
           </Route>
-          <PrivateRoute path={`/destination/:id`}>
+          <PrivateRoute path="/destination">
             <Destination></Destination>
           </PrivateRoute>
           <Route path="/login">
@@ -77,7 +77,7 @@ function App() {
       </Router>
 
    
-      </VContext.Provider>
+      </VehicleContext.Provider>
     </AuthContext.Provider>
 
     

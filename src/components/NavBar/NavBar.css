@@ -16,16 +16,19 @@
 .login-btn{
 
     
-    background-color: #069C54;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    font-weight: 600;
-    padding: 15px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 14px;
+  
+    background-color: tomato;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-weight: 600;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  padding: 15px 0;
+  width: 80px;
    
 }
 
@@ -86,7 +89,7 @@
     font-size: 18px;
     line-height: 30px;
     font-weight: 600;
-    color: #069C54;
+    color: tomato;
     text-decoration: none;    
 }
 
@@ -94,7 +97,7 @@
 /*  */
 
 .nav-link ul li a:hover{
-    color:#069C54;
+    color:tomato;
 }
 
 .ham-menu{
@@ -102,14 +105,34 @@
     display: none;
 }
 
-@media (max-width: 620px){
+
+@media (max-width: 991px){
 
     .logo{
-        width: 80%;
+        width: 30%;
+    }
+
+    .nav-link{
+        width: 70%;
+    }
+
+    .nav-link ul li{
+        list-style: none;
+        margin-left: 2.5%;
+        
+    }
+
+}
+
+
+@media (max-width: 767px){
+
+    .logo{
+        width: 70%;
         text-align: left;
     }
     .nav-link{
-        width: 20%;
+        width: 30%;
     }
     .nav-link ul{
         display: flex;
@@ -132,7 +155,15 @@
     
     .nav-link ul li a{
     
-        display: none;
+        display: none !important;
+    }
+
+    #conditionalProfile{
+        display: none !important;
     }
  
   }
+
+
+
+  

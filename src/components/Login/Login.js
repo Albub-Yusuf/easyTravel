@@ -13,6 +13,8 @@ import {faGoogle} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext} from '../../App';
 
+import  './Login.css';
+
 
 
 
@@ -30,9 +32,7 @@ const Login = () => {
 
     const { from } = location.state || { from: { pathname: "/" } };
 
-    let ptName = location.state.from.pathname;
-
-    console.log(ptName);
+  
 
 
     const handleLogin = () => {
@@ -48,7 +48,7 @@ const Login = () => {
                 const { displayName, email } = result.user;
                 const signedInUser = { name: displayName, email };
                 console.log(signedInUser);
-                console.log(displayName, email, ptName);
+                console.log(displayName, email);
                 setLoggedInUser(signedInUser);
                 history.replace(from);
 
@@ -60,6 +60,10 @@ const Login = () => {
                 var email = error.email;
                 // The firebase.auth.AuthCredential type that was used.
                 var credential = error.credential;
+                const newData = {
+                    hasError: errorMessage,
+                }
+                setLoggedInUser(newData);
                 // ...
             });
 
@@ -96,6 +100,10 @@ const Login = () => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
+                const newData = {
+                    hasError: errorMessage,
+                }
+                setLoggedInUser(newData);
             })
 
 
@@ -123,7 +131,6 @@ const Login = () => {
     
       }
 
-    // const { register, handleSubmit, watch, errors } = useForm();
 
     const onSubmitRegister = data => {
         
@@ -175,6 +182,11 @@ const Login = () => {
         if(data === "signup"){
 
             setToggle(false);
+            const newRegistered = {
+                isRegistered: '',
+                hasError:'',
+            }
+            setLoggedInUser(newRegistered);
             
         }
 
@@ -193,26 +205,31 @@ const Login = () => {
                 
                 toggle ?
 
-            <div style={{ border: '2px solid #333', width: '400px', margin: '40px auto', textAlign: 'center', }}>
-            <h3>Login Form</h3>
+            <div className="form-wrapper" >
+            
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="form-body">
                 <div>
-                    <h3>Login</h3>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-
-                        <input name="email" ref={register({ required: true })} />
-                        {errors.email && <span style={{ color: 'red' }}>Email is required</span>}
-
-                        <br /><br />
-                        <input type="password" name="password" ref={register({ required: true })} />
-                        {errors.password && <span style={{ color: 'red' }}>password is required</span>}
+                <h3>Login</h3>
+                    <form  onSubmit={handleSubmit(onSubmit)}>
+                        <br></br>
+                        
+                        <input placeholder="Email" className="input-style" type="email" name="email" ref={register({ required: true })} />
+                        {errors.email && <span style={{ color: 'red' }}><br></br>Email is required</span>}
 
                         <br /><br />
-                        <input type="submit" value="Sign in" />
+                        
+                        <input placeholder="Password" className="input-style" type="password" name="password" ref={register({ required: true })} />
+                        {errors.password && <span style={{ color: 'red' }}><br></br>password is required</span>}
+
+                        <br /><br />
+                        <input className="auth-btn" type="submit" value="Sign in" />
                     </form>
-                    <br /><br />
-                    <p>Don't have an account ? <span style={{textDecoration:'underline',cursor:'pointer'}} onClick={ () => handleToggle('signup')}>Create an account</span></p>
+                    <br></br>
+                    <div style={{textAlign:'center'}}>
+                    <p>Don't have an account ? <span style={{textDecoration:'underline',cursor:'pointer', color:'tomato'}} onClick={ () => handleToggle('signup')}>Create an account</span></p>
+                    {loggedInUser.hasError && <p style={{color:'red'}}>{loggedInUser.hasError}</p>}
+                    </div>
 
                     <br /><br />
 
@@ -224,37 +241,41 @@ const Login = () => {
         </div>
         :
 
-        <div style={{  border: '2px solid #333', width: '400px', margin: '40px auto', textAlign: 'center',}}>
+        <div className="form-wrapper">
           
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="form-body">
 
         
           <div>
-              <h3>User Sign Up</h3>
-              <form onSubmit={handleSubmit(onSubmitRegister)}>
+              <h3>Create an account</h3>
+              <form  onSubmit={handleSubmit(onSubmitRegister)}>
+                
 
-                  <input name="name" ref={register({ required: true })} />
-                  {errors.name && <span>Name is required</span>}
+                  <input placeholder="Name" className="input-style" name="name" ref={register({ required: true })} />
+                  {errors.name && <span style={{ color: 'red' }}><br></br>Name is required</span>}
                   <br /><br />
 
-                  <input name="email" ref={register({ required: true })} />
-                  {errors.email && <span>Email is required</span>}
+                  <input  placeholder="Email" className="input-style" type="email" name="email" ref={register({ required: true })} />
+                  {errors.email && <span style={{ color: 'red' }}><br></br>Email is required</span>}
 
                   <br /><br />
-                  <input type="password" name="password" ref={register({ required: true })} />
-                  {errors.password && <span>password is required</span>}
+                
+                  <input placeholder="Password" className="input-style" type="password" name="password" ref={register({ required: true })} />
+                  {errors.password && <span style={{ color: 'red' }}><br></br>password is required</span>}
 
                   <br /><br />
-                  <input type="password" name="confirmPassword" ref={register({ required: true })} />
-                  {errors.confirmPassword && <span>Confirm Password is required</span>}
+                  <input placeholder="Confirm Password" className="input-style" type="password" name="confirmPassword" ref={register({ required: true })} />
+                  {errors.confirmPassword && <span style={{ color: 'red' }}><br></br>Confirm Password is required</span>}
 
                   <br /><br />
-                  <input type="submit" value="Sign up" />
+                  <input className="auth-btn" type="submit" value="Sign up" />
               </form>
-              <br/><br/>
-               <p>Already have an account ? <span style={{textDecoration:'underline',cursor:'pointer'}} onClick={ () => handleToggle('login')}>Login</span></p>
+              <br/>
+             <div style={{textAlign:'center'}}>
+             <p>Already have an account ? <span style={{textDecoration:'underline',cursor:'pointer', color:'tomato'}} onClick={ () => handleToggle('login')}>Login</span></p>
                {loggedInUser.isRegistered && <p style={{color:'green'}}>{loggedInUser.isRegistered}</p>}
                {loggedInUser.hasError && <p style={{color:'red'}}>{loggedInUser.hasError}</p>}
+             </div>
 
           </div>
       </div>

@@ -22,24 +22,24 @@ const Navbar = () => {
             <div className="nav-link">
                 <ul>
                     <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/destination/1">Destination</Link></li>
+                    <li><Link to="/destination">Destination</Link></li>
                     <li><Link to="/">Blog</Link></li>
                     <li><Link to="/">Contact</Link></li>
-                    <li>{loggedInUser.email ? <strong>{loggedInUser.name}</strong> : <Link to="/login"><button className="login-btn">Login</button></Link>}</li>
+                    <li id="conditionalProfile">{loggedInUser.email ? <strong>{loggedInUser.name}</strong> : <Link to="/login"><button className="login-btn">Login</button></Link>}</li>
                     <li><FontAwesomeIcon className="ham-menu" icon={faBars}></FontAwesomeIcon></li>
                 </ul>
             </div>
            
             {/* dropdown */}
 
-            <div className="nav-link-hidden">
+            {/* <div className="nav-link-hidden">
                 <ul>
                 <li><Link to="/home">Home</Link></li>
                     <li><Link to="/destination">Destination</Link></li>
                     <li><Link to="/">Blog</Link></li>
                     <li><Link to="/">Contact</Link></li>
                 </ul>
-            </div>
+            </div> */}
         </div>
 
         </Container>

@@ -1,20 +1,17 @@
 import React, { createContext, useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { VContext } from '../../App';
+import { VehicleContext } from '../../App';
 import './Transport.css';
 
 
 const Transport = (props) => {
 
-    const [vinfo, setVinfo] = useContext(VContext);
+    const [vehicleInfos, setvehicleInfos] = useContext(VehicleContext);
     console.log(props.vehicle);
     const { id, vehicle, image, cost, capacity, economy, luxury } = props.transport;
     console.log(vehicle);
-    const url = `/destination/${vehicle}`;
-
-
-
+   
 
     const handleData = () => {
 
@@ -31,13 +28,7 @@ const Transport = (props) => {
 
 
         }
-
-        setVinfo(vehicleData);
-
-        console.log(vinfo);
-
-
-
+        setvehicleInfos(vehicleData);
 
 
     }
@@ -45,7 +36,7 @@ const Transport = (props) => {
 
     return (
         <div>
-            <Link to={`/destination/${id}`} onClick={handleData}>
+            <Link to="/destination" onClick={handleData}>
                 <div className="vehicle-card">
                     <div className="vehicle-card-content">
                         <div className="vehicle-logo">
