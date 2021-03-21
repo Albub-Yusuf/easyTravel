@@ -29,6 +29,7 @@
 
   .bar p {
 
+    margin-top: 20px;
     font-size: 18px;
     font-weight: 600;
   }
@@ -73,8 +74,81 @@
 
   }
 
+  .map-wrapper{
+
+    display: flex;
+    background-color: lightgrey;
+    min-height: 550px;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .options-wrapper{
+
+    background-color: lightgrey;
+    border: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .booking-info{
+
+ 
+    background-color: tomato;
+    color: #fff;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .available-transport{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    color:#333;
+    border-radius: 10px;
+
+
+  }
+
+
+  .transport img{
+
+    width: 60px;
+
+  }
+  
+  .capacity img{
+    width: 25px;
+  }
+
+  .price{
+    display: flex;
+  }
+
+
+
+
+
   @media(max-width:991px){
 
+    .available-transport{
+
+        flex-direction: column;
+        text-align: left;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 10px auto;
+
+    }
+  
     #contentSection{
       flex-direction: column;
     }
@@ -86,3 +160,22 @@
     }
 
   }
+
+  @media(max-width:575px){
+
+    .available-transport{
+   
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-evenly;
+     margin: 10px;
+     padding: 10px;
+     background-color: #fff;
+     color:#333;
+     border-radius: 10px;
+   
+    }
+    
+   
+   }

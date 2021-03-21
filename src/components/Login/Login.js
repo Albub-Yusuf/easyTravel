@@ -4,15 +4,11 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { useForm } from 'react-hook-form';
 import { useHistory, useLocation } from 'react-router';
-
 import { Button } from 'react-bootstrap';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext } from '../../App';
-
 import './Login.css';
 
 
@@ -35,12 +31,10 @@ const Login = () => {
 
 
 
-
+    //google log in 
     const handleLogin = () => {
 
         const provider = new firebase.auth.GoogleAuthProvider();
-
-
 
         firebase.auth()
             .signInWithPopup(provider)
@@ -52,18 +46,14 @@ const Login = () => {
                 history.replace(from);
 
             }).catch((error) => {
-                // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                // The email of the user's account used.
                 var email = error.email;
-                // The firebase.auth.AuthCredential type that was used.
                 var credential = error.credential;
                 const newData = {
                     hasError: errorMessage,
                 }
                 setLoggedInUser(newData);
-                // ...
             });
 
     }
@@ -109,7 +99,6 @@ const Login = () => {
     };
 
     // sign up code
-
     const updateUserInfo = name => {
 
         const user = firebase.auth().currentUser;
@@ -157,6 +146,9 @@ const Login = () => {
 
     };
 
+
+
+    //Login and Create account form toggle and handle status and error
     const [toggle, setToggle] = useState();
     const handleToggle = data => {
 
@@ -185,6 +177,7 @@ const Login = () => {
     }
 
     return (
+        //Login and Create account form showing conditionally
         <div style={{ textAlign: 'center' }}>
 
             {
@@ -294,26 +287,13 @@ const Login = () => {
 
             }
 
+            {/* google Sign in button */}
             <div>
                 &mdash;&mdash;&mdash;&mdash; Or &mdash;&mdash;&mdash;&mdash;
                 <br /><br />
                 <Button onClick={handleLogin}><FontAwesomeIcon icon={faGoogle} />    &nbsp;&nbsp;Continue with google</Button>
                 <br /><br />
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </div>
     );

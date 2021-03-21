@@ -3,8 +3,6 @@ import './NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
-// or less ideally
 import { Button, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthContext } from '../../App';
@@ -12,11 +10,12 @@ import { useState } from 'react';
 
 
 const Navbar = () => {
+    //set AuthContext
     const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
 
     const [locations, setLocations] = useState(false);
 
-
+    //navbar collapse toggle
     const handleNavToggle = () => {
 
         if (locations == false) {
@@ -53,6 +52,7 @@ const Navbar = () => {
 
             </div>
 
+            {/* Collapsed navigation */}
             {
                 locations && <div id="hidden-ui" style={{ display: 'flex', background: 'transparent', alignItems: 'center', justifyContent: 'center' }}>
                     <div>
