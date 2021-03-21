@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
@@ -25,6 +25,7 @@ const Login = () => {
     }
 
     let isSignedUp = true;
+    let isLoggedIn = false;
     const [loggedInUser, setLoggedInUser] = useContext(AuthContext);
 
     const history = useHistory();
@@ -46,7 +47,7 @@ const Login = () => {
             .then((result) => {
 
                 const { displayName, email } = result.user;
-                const signedInUser = { name: displayName, email };
+                const signedInUser = { name: displayName, email, isLoggedIn: true };
                 setLoggedInUser(signedInUser);
                 history.replace(from);
 
@@ -71,6 +72,8 @@ const Login = () => {
     //Login using email & password
 
     const { register, handleSubmit, watch, errors } = useForm();
+    const password = useRef({});
+    password.current = watch("password", "");
 
     const onSubmit = data => {
 
@@ -84,7 +87,7 @@ const Login = () => {
 
                 const user = res.user;
                 const { displayName, email } = res.user;
-                const signedInUser = { name: displayName, email };
+                const signedInUser = { name: displayName, email, isLoggedIn: true };
 
                 setLoggedInUser(signedInUser);
                 history.replace(from);
@@ -181,15 +184,10 @@ const Login = () => {
 
     }
 
-
-
-
-
     return (
         <div style={{ textAlign: 'center' }}>
 
             {
-
 
                 toggle ?
 
@@ -202,13 +200,19 @@ const Login = () => {
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <br></br>
 
-                                    <input placeholder="Email" className="input-style" type="email" name="email" ref={register({ required: true })} />
-                                    {errors.email && <span style={{ color: 'red' }}><br></br>Email is required</span>}
+                                    <input placeholder="Email" className="input-style" type="email" name="email" ref={register({
+                                        required: "Required",
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: "invalid email address"
+                                        }
+                                    })} />
+                                    {errors.email && <span style={{ color: 'red' }}><br></br>{errors.email.message}</span>}
 
                                     <br /><br />
 
-                                    <input placeholder="Password" className="input-style" type="password" name="password" ref={register({ required: true })} />
-                                    {errors.password && <span style={{ color: 'red' }}><br></br>password is required</span>}
+                                    <input placeholder="password" className="input-style" type="password" name="password" ref={register({ required: true })} />
+                                    {errors.password && <span style={{ color: 'red' }}><br></br>Password is required</span>}
 
                                     <br /><br />
                                     <input className="auth-btn" type="submit" value="Sign in" />
@@ -243,17 +247,32 @@ const Login = () => {
                                     {errors.name && <span style={{ color: 'red' }}><br></br>Name is required</span>}
                                     <br /><br />
 
-                                    <input placeholder="Email" className="input-style" type="email" name="email" ref={register({ required: true })} />
-                                    {errors.email && <span style={{ color: 'red' }}><br></br>Email is required</span>}
+                                    <input placeholder="Email" className="input-style" type="email" name="email" ref={register({
+                                        required: "Required",
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: "invalid email address"
+                                        }
+                                    })} />
+                                    {errors.email && <span style={{ color: 'red' }}><br></br>{errors.email.message}</span>}
 
                                     <br /><br />
 
-                                    <input placeholder="Password" className="input-style" type="password" name="password" ref={register({ required: true })} />
-                                    {errors.password && <span style={{ color: 'red' }}><br></br>password is required</span>}
+                                    <input placeholder="Password" className="input-style" type="password" name="password" ref={register({
+                                        required: "You must specify a password",
+                                        minLength: {
+                                            value: 6,
+                                            message: "Password must have at least 6 characters"
+                                        }
+                                    })} />
+                                    {errors.password && <span style={{ color: 'red' }}><br></br>{errors.password.message}</span>}
 
                                     <br /><br />
-                                    <input placeholder="Confirm Password" className="input-style" type="password" name="confirmPassword" ref={register({ required: true })} />
-                                    {errors.confirmPassword && <span style={{ color: 'red' }}><br></br>Confirm Password is required</span>}
+                                    <input placeholder="Confirm Password" className="input-style" type="password" name="confirmPassword" ref={register({
+                                        validate: value =>
+                                            value === password.current || "The passwords do not match"
+                                    })} />
+                                    {errors.confirmPassword && <span style={{ color: 'red' }}><br></br>{errors.confirmPassword.message}</span>}
 
                                     <br /><br />
                                     <input className="auth-btn" type="submit" value="Sign up" />
@@ -278,7 +297,7 @@ const Login = () => {
             <div>
                 &mdash;&mdash;&mdash;&mdash; Or &mdash;&mdash;&mdash;&mdash;
                 <br /><br />
-                <Button onClick={handleLogin}><FontAwesomeIcon icon={faGoogle} />    ... continue with google</Button>
+                <Button onClick={handleLogin}><FontAwesomeIcon icon={faGoogle} />    &nbsp;&nbsp;Continue with google</Button>
                 <br /><br />
             </div>
 
