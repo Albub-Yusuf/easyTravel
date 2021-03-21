@@ -50,10 +50,12 @@ const Destination = () => {
 
     const onSubmit = data => {
 
+        console.log(data);
         const newLocations = {
 
             from: data.pickupFrom,
-            to: data.pickupTo
+            to: data.pickupTo,
+            date: data.date
         }
 
         setLocations(newLocations);
@@ -84,6 +86,9 @@ const Destination = () => {
                                     <input className="inputStyle" name="pickupTo" ref={register({ required: true })} />
                                     {errors.pickupFrom && <span>field is required</span>}
                                     <br></br>
+                                    <label>Select Date</label><br></br>
+                                    <input className="inputStyle" type="date" name="date" id="date" ref={register({required: true})}/>
+                                    {errors.data && <span>Please Select a date of your travel</span>}
                                     <div style={{ marginTop: '10px', textAlign: 'center' }}>
                                         <input className="pick-btn" type="submit" value="Search" />
                                     </div>
@@ -101,7 +106,9 @@ const Destination = () => {
                                         <ul className="bar">
                                             <li>{locations.from} </li>
                                             <li>{locations.to} </li>
+                                            <p>Date: {locations.date}</p>
                                         </ul>
+                                         {/* <p>Date : {locations.date}</p> */}
                                     </div>
                                     <br></br>
                                     <div style={{ display: 'flex', background: '#fff', borderRadius: '10px', margin: '10px', padding: '10px', color: '#333', alignItems: 'center', justifyContent: 'space-evenly' }}>

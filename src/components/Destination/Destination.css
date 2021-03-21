@@ -27,6 +27,12 @@
     top: -50%;
   }
 
+  .bar p {
+
+    font-size: 18px;
+    font-weight: 600;
+  }
+
   .inputStyle{
 
     width: 100%;
