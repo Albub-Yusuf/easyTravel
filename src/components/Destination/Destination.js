@@ -50,7 +50,6 @@ const Destination = () => {
 
     const onSubmit = data => {
 
-        console.log(data);
         const newLocations = {
 
             from: data.pickupFrom,
