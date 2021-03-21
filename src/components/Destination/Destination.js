@@ -6,9 +6,14 @@ import { useForm } from 'react-hook-form';
 import './Destination.css';
 import peoples from '../../images/peopleicon.png';
 import { AuthContext, VehicleContext } from '../../App';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL from 'react-map-gl'
+import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
 
-import './Destination.css'
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
+
 
 
 const Destination = () => {
@@ -22,12 +27,12 @@ const Destination = () => {
     let [viewport, setViewport] = useState({
 
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: 550,
         latitude: 23.7461,
         longitude: 90.3742,
         zoom: 13,
         pitch: 50
-       
+
 
     })
 
@@ -154,12 +159,13 @@ const Destination = () => {
                         <br></br>
                         <div style={{ display: 'flex', background: 'lightgray', minHeight: '550px', borderRadius: '3px', alignItems: 'center', justifyContent: 'center' }}>
 
-                            <ReactMapGL
+                            <ReactMapGL {...viewport} mapboxApiAccessToken="pk.eyJ1IjoiYWxidWJ5dXN1ZiIsImEiOiJja21oOXBtdDUwMTBuMnBvN3A5d3g0bjM2In0.7aiK3tIRGcGrN66WU5VVEg"
 
-                                mapStyle={'mapbox://styles/mapbox/dark-v9'}
-                                mapboxApiAccessToken={'pk.eyJ1IjoiYWxidWJ5dXN1ZiIsImEiOiJja21oOXBtdDUwMTBuMnBvN3A5d3g0bjM2In0.7aiK3tIRGcGrN66WU5VVEg'}
-
-                                {...viewport} onViewportChange={(newView) => setViewport(newView)}></ReactMapGL>
+                                mapStyle="mapbox://styles/albubyusuf/ckmimko2j3sch17ndjgwgw5j0"
+                                onViewportChange={viewport => {
+                                    setViewport(viewport);
+                                }}>
+                            </ReactMapGL>
 
                         </div>
                     </Col>
